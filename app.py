@@ -4,7 +4,6 @@ import json
 
 from agent import query_agent, create_agent
 
-
 def decode_response(response: str) -> dict:
     """This function converts the string response from the model to a dictionary object.
 
@@ -61,9 +60,7 @@ with st.sidebar:
 
 st.title("Agent LLM")
 
-st.write("Upload your CSV")
-
-data = st.file_uploader("Upload a CSV")
+data = st.file_uploader("upload a CSV")
 
 query = st.text_area("query")
 
