@@ -3,15 +3,15 @@ from langchain.agents import create_pandas_dataframe_agent
 import pandas as pd
 
 # Setting up the api key
-import environ
+# import environ
 
-env = environ.Env()
-environ.Env.read_env()
+# env = environ.Env()
+# environ.Env.read_env()
 
-API_KEY = env("apikey")
+# API_KEY = env("apikey")
 
 
-def create_agent(filename: str):
+def create_agent(filename: str, API_KEY):
     """
     Create an agent that can access and use a large language model (LLM).
 

@@ -55,6 +55,11 @@ def write_response(response_dict: dict):
 
 st.title("👨‍💻 Chat with your CSV")
 
+with st.sidebar: 
+    st.title("CHAT with CSV")
+    API_KEY = st.text_area("Insert your API_KEY")
+    st.markdown('Made by [Daniel Querales](mailto:d.querales@gmail.com)')
+
 st.write("Please upload your CSV file below.")
 
 data = st.file_uploader("Upload a CSV")
@@ -63,7 +68,7 @@ query = st.text_area("Insert your query")
 
 if st.button("Submit Query", type="primary"):
     # Create an agent from the CSV file.
-    agent = create_agent(data)
+    agent = create_agent(data, API_KEY)
 
     # Query the agent.
     response = query_agent(agent=agent, query=query)
