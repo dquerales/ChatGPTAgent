@@ -52,19 +52,20 @@ def write_response(response_dict: dict):
         df = pd.DataFrame(data["data"], columns=data["columns"])
         st.table(df)
 
-
-st.title("👨‍💻 Chat with your CSV")
+st.set_page_config(page_title="Explorer App")
 
 with st.sidebar: 
-    st.title("CHAT with CSV")
+    st.title("API KEYS")
     API_KEY = st.text_area("Insert your API_KEY")
     st.markdown('Made by [Daniel Querales](mailto:d.querales@gmail.com)')
 
-st.write("Please upload your CSV file below.")
+st.title("Agent LLM")
+
+st.write("Upload your CSV")
 
 data = st.file_uploader("Upload a CSV")
 
-query = st.text_area("Insert your query")
+query = st.text_area("query")
 
 if st.button("Submit Query", type="primary"):
     # Create an agent from the CSV file.
