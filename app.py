@@ -60,9 +60,9 @@ with st.sidebar:
 
 st.title("Agent LLM")
 
-data = st.file_uploader("upload a CSV")
+data = st.file_uploader("Upload your CSV")
 
-query = st.text_area("query")
+query = st.text_area("Insert your query")
 
 if st.button("Submit Query", type="primary"):
     # Create an agent from the CSV file.
