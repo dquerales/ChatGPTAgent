@@ -51,22 +51,24 @@ def write_response(response_dict: dict):
         df = pd.DataFrame(data["data"], columns=data["columns"])
         st.table(df)
 
-st.set_page_config(page_title="Explorer App")
+st.set_page_config(page_title="Explorer Agent App")
 
 with st.sidebar: 
-    st.title("API KEYS")
-    API_KEY = st.text_area("Insert your API_KEY")
     st.markdown('Made by [Daniel Querales](mailto:d.querales@gmail.com)')
 
 st.title("Agent LLM")
 
-data = st.file_uploader("Upload your CSV")
+df = st.file_uploader("Upload your CSV")
+with st.expander('See DataFrame'):
+    st.write(df)
+
+API_KEY = st.text_input("Insert your API_KEY")
 
 query = st.text_area("Insert your query")
 
 if st.button("Submit Query", type="primary"):
     # Create an agent from the CSV file.
-    agent = create_agent(data, API_KEY)
+    agent = create_agent(df, API_KEY)
 
     # Query the agent.
     response = query_agent(agent=agent, query=query)
