@@ -58,10 +58,12 @@ with st.sidebar:
 
 st.title("Agent LLM")
 
+st.header('Upload your data')
 df = st.file_uploader("Upload your CSV")
 with st.expander('See DataFrame'):
-    st.write(df)
+    st.dataframe(df)
 
+st.header('Chat')
 API_KEY = st.text_input("Insert your API_KEY")
 
 query = st.text_area("Insert your query")
