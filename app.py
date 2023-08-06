@@ -49,7 +49,7 @@ st.header('Upload your dataset')
 df = st.file_uploader("Upload your CSV")
 
 st.header('Chat with your data')
-API_KEY = st.text_input("Insert your secret API_KEY", type="password", on_change=password_entered)
+API_KEY = st.text_input("Insert your secret API_KEY", type="password")
 
 query = st.text_area("Insert your query")
 
