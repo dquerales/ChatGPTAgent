@@ -5,27 +5,12 @@ import json
 from agent import query_agent, create_agent
 
 def decode_response(response: str) -> dict:
-    """This function converts the string response from the model to a dictionary object.
-
-    Args:
-        response (str): response from the model
-
-    Returns:
-        dict: dictionary with response data
-    """
+    #This function converts the string response from the model to a dictionary object.
     return json.loads(response)
 
 
 def write_response(response_dict: dict):
-    """
-    Write a response from an agent to a Streamlit app.
-
-    Args:
-        response_dict: The response from the agent.
-
-    Returns:
-        None.
-    """
+    #Write a response from an agent to a Streamlit app.
 
     # Check if the response is an answer.
     if "answer" in response_dict:
@@ -51,18 +36,20 @@ def write_response(response_dict: dict):
         df = pd.DataFrame(data["data"], columns=data["columns"])
         st.table(df)
 
-st.set_page_config(page_title="Explorer Agent App")
+st.set_page_config(page_title="CHATGPT Agent App", page_icon="🤖")
 
-with st.sidebar: 
+with st.sidebar:
+    st.header('ChatGPT Agent')
+    st.markdown('Chat GPT Agent using Langchain tools')
     st.markdown('Made by [Daniel Querales](mailto:d.querales@gmail.com)')
 
-st.title("Agent LLM")
+st.title("🤖 ChatGPT Agent LLM for Data Exploration")
 
-st.header('Upload your data')
+st.header('Upload your dataset')
 df = st.file_uploader("Upload your CSV")
 
 st.header('Chat')
-API_KEY = st.text_input("Insert your API_KEY")
+API_KEY = st.text_input("Insert your secret API_KEY")
 
 query = st.text_area("Insert your query")
 
