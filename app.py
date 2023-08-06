@@ -50,18 +50,10 @@ df = st.file_uploader("Upload your CSV")
 
 st.header('Chat with your data')
 API_KEY = st.text_input("Insert your secret API_KEY", type="password")
-
 query = st.text_area("Insert your query")
 
 if st.button("Submit Query", type="primary"):
-    # Create an agent from the CSV file.
     agent = create_agent(df, API_KEY)
-
-    # Query the agent.
     response = query_agent(agent=agent, query=query)
-
-    # Decode the response.
     decoded_response = decode_response(response)
-
-    # Write the response to the Streamlit app.
     write_response(decoded_response)
