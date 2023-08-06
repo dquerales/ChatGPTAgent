@@ -48,8 +48,8 @@ st.title("🤖 ChatGPT Agent LLM for Data Exploration")
 st.header('Upload your dataset')
 df = st.file_uploader("Upload your CSV")
 
-st.header('Chat')
-API_KEY = st.text_input("Insert your secret API_KEY")
+st.header('Chat with your data')
+API_KEY = st.text_input("Insert your secret API_KEY", type="password", on_change=password_entered)
 
 query = st.text_area("Insert your query")
 
