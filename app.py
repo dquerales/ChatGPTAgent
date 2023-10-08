@@ -1,14 +1,12 @@
 import streamlit as st
 import pandas as pd
 import json
-
 from agent import query_agent, create_agent
 
 def decode_response(response: str) -> dict:
     #This function converts the string response from the model to a dictionary object.
     return json.loads(response)
-
-
+    
 def write_response(response_dict: dict):
     #Write a response from an agent to a Streamlit app.
 
@@ -36,24 +34,25 @@ def write_response(response_dict: dict):
         df = pd.DataFrame(data["data"], columns=data["columns"])
         st.table(df)
 
-st.set_page_config(page_title="CHATGPT Agent App", page_icon="🤖")
+st.set_page_config(page_title="CHATGPT Explorer App", page_icon="🤖")
 
 with st.sidebar:
     st.header('ChatGPT Agent')
     st.markdown('Chat GPT Agent using Langchain tools')
     st.markdown('Made by [Daniel Querales](mailto:d.querales@gmail.com)')
 
-st.title("🤖 ChatGPT Agent LLM for Data Exploration")
+st.title("🤖 ChatGPT for Data Exploration")
 
-st.header('Upload your dataset')
+st.header('⬆️ Upload your dataset')
 df = st.file_uploader("Upload your CSV")
 
 st.header('Chat with your data')
-API_KEY = st.text_input("Insert your secret API_KEY", type="password")
-query = st.text_area("Insert your query")
+API_KEY = st.text_input("Insert your secret API_KEY 🔑", type="password")
+query = st.text_area("Insert your query 🗨️")
 
-if st.button("Submit Query", type="primary"):
+if st.button("Submit Query ❓", type="primary"):
     agent = create_agent(df, API_KEY)
     response = query_agent(agent=agent, query=query)
     decoded_response = decode_response(response)
     write_response(decoded_response)
+    
